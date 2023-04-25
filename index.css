@@ -1,0 +1,278 @@
+html {
+  height: 100vh;
+
+  display: grid;
+  place-items: center;
+
+  background: #42a7a1;
+}
+:root {
+  --blue: #7ba2ff;
+  --red: #fa7373;
+
+  font-family: 'Open Sans', sans-serif;
+}
+
+.frame {
+  width: 400px;
+  height: 400px;
+
+  display: grid;
+  place-items: center;
+
+  -webkit-font-smoothink: antialiased;
+  -moz-osx-font-smoothink: grayscale;
+}
+
+.card {
+  width: 280px;
+  height: 220px;
+  border-radius: 4px;
+
+  background: #fff;
+  box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.header {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background: #f1ba64;
+
+  color: #fff;
+}
+
+.big {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.small {
+  font-size: 11px;
+  font-weight: 400;
+}
+.title,
+.type {
+  padding: 10px 10px 0;
+}
+.date,
+.value {
+  padding: 0 10px 10px;
+}
+.type,
+.value {
+  text-align: right;
+}
+
+.parameter {
+  text-align: right;
+  padding: 10px 0 14px 0;
+}
+.parameter span {
+  padding: 0 10px 0 25px;
+
+  position: relative;
+
+  font-size: 12px;
+  line-height: 13px;
+
+  color: #606060;
+}
+.parameter span:before {
+  width: 14px;
+  height: 4px;
+  border-radius: 3px;
+
+  display: block;
+  position: absolute;
+  left: 8px;
+  top: 6px;
+
+  content: '';
+}
+.parameter .red:before {
+  background: var(--red);
+}
+.parameter .blue:before {
+  background: var(--blue);
+}
+
+.statistic {
+  width: 260px;
+  height: 81px;
+  margin: 0 auto;
+
+  position: relative;
+}
+.line-1,
+.line-2,
+.line-3 {
+  height: 1px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  background: #f2f2f2;
+}
+.line-2 {
+  top: 40px;
+}
+.line-3 {
+  top: inherit;
+  bottom: 0;
+}
+
+.data svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.data polyline {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.red polyline {
+  stroke: var(--red);
+}
+.blue polyline {
+  stroke: var(--blue);
+}
+.data .tooltip {
+  padding: 8px 6px;
+  border-radius: 4px;
+
+  position: absolute;
+  left: 50%;
+  bottom: 13px;
+
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 11px;
+  color: #fff;
+
+  visibility: hidden;
+  opacity: 1;
+  transform: translate3d(-50%, 10px, 0);
+  transition: transform 0.4s ease-out 0s, opacity 0.4s ease-out 0s;
+}
+.data .tooltip::after {
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: -3px;
+
+  transform: rotate(45deg);
+
+  content: '';
+}
+.data [class^='point-'] {
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+
+  z-index: 10;
+  position: absolute;
+
+  cursor: pointer;
+}
+.data [class^='point-']:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+
+  transform: translate3d(-50%, 0, 0);
+}
+.red [class^='point-'],
+.red [class^='point-'] .tooltip,
+.red .tooltip:after {
+  background: var(--red);
+}
+.red .point-1 {
+  left: 7px;
+  top: 43px;
+}
+.red .point-2 {
+  left: 48px;
+  top: 9px;
+}
+.red .point-3 {
+  left: 88px;
+  top: 20px;
+}
+.red .point-4 {
+  left: 128px;
+  top: 8px;
+}
+.red .point-5 {
+  left: 169px;
+  top: 35px;
+}
+.red .point-6 {
+  left: 209px;
+  top: 45px;
+}
+.red .point-7 {
+  left: 249px;
+  top: 16px;
+}
+.blue [class^='point-'],
+.blue [class^='point-'] .tooltip,
+.blue .tooltip:after {
+  background: var(--blue);
+}
+
+.blue .point-1 {
+  left: 7px;
+  top: 58px;
+}
+.blue .point-2 {
+  left: 48px;
+  top: 47px;
+}
+.blue .point-3 {
+  left: 88px;
+  top: 62px;
+}
+.blue .point-4 {
+  left: 128px;
+  top: 52px;
+}
+.blue .point-5 {
+  left: 169px;
+  top: 58px;
+}
+.blue .point-6 {
+  left: 209px;
+  top: 71px;
+}
+.blue .point-7 {
+  left: 249px;
+  top: 61px;
+}
+
+.card .days {
+  width: 280px;
+  margin: 0 auto;
+}
+.card .days .day {
+  width: calc(100% / 7);
+
+  display: block;
+  float: left;
+
+  text-align: center;
+  font-size: 9px;
+  text-transform: uppercase;
+  line-height: 30px;
+  color: #949494;
+}
